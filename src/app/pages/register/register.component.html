@@ -1,0 +1,37 @@
+<div class="jumbotron">
+    <h1 data-cy="main-heading">Register heading</h1>
+    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+</div>
+
+<div class="row marketing">
+    <div class="col-sm-12">
+
+        <div class="alert alert-success" *ngIf="formProcessed">Success!</div>
+
+        <form [formGroup]="regoForm" (ngSubmit)="submitForm(regoForm, $event)" #myForm="ngForm" *ngIf="!formProcessed">
+            <div class="form-group">
+                <label for="inputName">Your name</label>
+                <input type="email" class="form-control" id="inputName" formControlName="name" placeholder="Full name">
+                <small class="text-danger" *ngIf="name.invalid && myForm.submitted">
+                    required field
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" formControlName="email" placeholder="Email">
+                <small class="text-danger" *ngIf="email.invalid && myForm.submitted">
+                    required field
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" formControlName="password" placeholder="Password">
+                <small class="text-danger" *ngIf="password.invalid && myForm.submitted">
+                    required field
+                </small>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" data-cy="btn-submit">Submit</button>
+        </form>
+
+    </div>
+</div>
